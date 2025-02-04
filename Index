@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Botão Animado com Cópia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+   button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #f7eeee;
+  background-color: #11618a;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 40px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2), 0px 8px 16px rgba(6, 87, 128, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #144e75;
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3), 0px 12px 24px rgba(32, 144, 184, 0.4);
+  transform: translateY(-2px) scale(1.05);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.95);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(32, 144, 184, 0.3);
+}
+
+.animated {
+  animation: pulsate 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes pulsate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+  </style>
+</head>
+<body>
+<button onclick="copyToClipboard()">Atraso</button>
+<script>
+  function copyToClipboard() {
+    var textArea = document.createElement("textarea");
+    textArea.value = "Primeiramente pedimos desculpas pelo atraso de sua entrega, não é essa experiência que queremos passar aos nossos clientes!\n\nEstamos verificando um novo prazo de entrega com a transportadora, poderia confirmar os dados abaixo para que possamos encaminhar à eles, por gentileza?\n\nCep:\nRua:\nNúmero:\nComplemento:\nPonto de Referência:\nBairro:\nCidade:\nEstado:\nTelefone:\nTelefone:\n\nAguardamos seu retorno!";
+
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    button.classList.add('animated');
+    setTimeout(() => button.classList.remove('animated'), 500);
+  }
+</script>
+</body>
+</html>
